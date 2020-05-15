@@ -1,0 +1,137 @@
+<template>
+  <div class="tab-box">
+    <div class="tab" :class="{'selected': defaultSelected === index + 1}" v-for="(item, index) in url" :key="index" @click="handleGo(item, index)">
+      <div class="tab-icon">
+        <img :src="item.icon" alt="" v-show="item.icon">
+      </div>
+      <div class="name">{{item.name}}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+  const urlList = [
+    {
+      icon: '',
+      url: 'https://www.baidu.com',
+      name: 'Home'
+    },
+    {
+      icon: '',
+      url: 'https://www.baidu.com',
+      name: 'Coupon'
+    },
+    {
+      icon: '',
+      url: 'https://www.baidu.com',
+      name: 'Point Mall'
+    },
+    {
+      icon: '',
+      url: 'https://www.baidu.com',
+      name: 'Delivery'
+    },
+    {
+      icon: '',
+      url: 'https://www.baidu.com',
+      name: 'Membership'
+    }
+  ];
+  export default {
+    name: 'cil-tab',
+    data () {
+      return {
+        url: [],
+      }
+    },
+    props: {
+      zIndex: {
+        type: Number,
+        default: 99999,
+      },
+      background: {
+        type: String,
+        default: '#ffffff',
+      },
+      baseUrl: {
+        type: Array,
+        default: function () {
+          return urlList
+        }
+      },
+      defaultSelected: {
+        type: Number,
+        default: 1,
+      }
+    },
+    methods: {
+      handleGo(item) {
+        location.href = item.url;
+      },
+      defaultData() {
+        let arr = this.baseUrl;
+        let arr1 = urlList;
+        for (var i  = 0; i< arr.length; i++) {
+          if (typeof arr[i] === 'string') {
+            arr1[i]['url'] = arr[i]
+          } else if (typeof arr[i] === 'object') {
+            if (arr[i]['url']) {
+              arr1[i]['url'] = arr[i]['url'];
+            }
+
+            if (arr[i]['icon']) {
+              arr1[i]['icon'] = arr[i]['icon'];
+            }
+
+            if (arr[i]['name']) {
+              arr1[i]['name'] = arr[i]['name'];
+            }
+          } else {
+            arr1[i] = arr[i];
+          }
+        }
+        this.url = arr1;
+      },
+    },
+    mounted() {
+      this.defaultData();
+    },
+  }
+</script>
+
+<style scoped>
+  .tab-box {
+    width: 100%;
+    border-top: 1px solid #EEEEEE;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+  .tab-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #cccccc;
+    margin: 0 auto 5px;
+  }
+  .tab>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .name {
+    color: #1E1E1E;
+    font-size: 12px;
+    transform: scale(0.8);
+    margin: 0 auto;
+  }
+  .selected>.tab-icon {
+    background-color: #42b983;
+  }
+  .selected>.name {
+    color: #42b983;
+  }
+</style>
