@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <cil-tab :base-url="urlList"></cil-tab>
+    <cil-tab :base-url="urlList" location="replace"></cil-tab>
   </div>
 </template>
 

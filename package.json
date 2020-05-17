@@ -1,8 +1,8 @@
 {
   "name": "cil-tab",
   "description": "fixed tab plugins",
-  "version": "1.0.1",
-  "author": "abraham.zhai@cardinfolink.com <abraham.zhai@cardinfolink.com>",
+  "version": "1.0.3",
+  "author": "1240866707@qq.com <1240866707@qq.com>",
   "license": "MIT",
   "private": false,
   "main": "dist/tabbar.js",

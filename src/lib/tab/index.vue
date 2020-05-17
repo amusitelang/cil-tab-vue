@@ -10,29 +10,33 @@
 </template>
 
 <script>
+
+
+  import { home,coupon, delivery,deliveryed,menbershiped,homeed,pointMalled,couponed,menbership,pointMall} from './cil-tab'
+
   const urlList = [
     {
-      icon: '',
+      icon: home,
       url: 'https://www.baidu.com',
       name: 'Home'
     },
     {
-      icon: '',
+      icon: coupon,
       url: 'https://www.baidu.com',
       name: 'Coupon'
     },
     {
-      icon: '',
+      icon: pointMall,
       url: 'https://www.baidu.com',
       name: 'Point Mall'
     },
     {
-      icon: '',
+      icon: delivery,
       url: 'https://www.baidu.com',
       name: 'Delivery'
     },
     {
-      icon: '',
+      icon: menbership,
       url: 'https://www.baidu.com',
       name: 'Membership'
     }
@@ -62,11 +66,19 @@
       defaultSelected: {
         type: Number,
         default: 1,
+      },
+      location: {
+        type: String,
+        default: 'push',
       }
     },
     methods: {
       handleGo(item) {
-        location.href = item.url;
+        if (this.location === 'push') {
+          location.href = item.url;
+        } else if (this.location === 'replace') {
+          location.replace(item.url);
+        }
       },
       defaultData() {
         let arr = this.baseUrl;
@@ -90,6 +102,10 @@
             arr1[i] = arr[i];
           }
         }
+        let iconList = [homeed, couponed, pointMalled, deliveryed, menbershiped];
+        if (this.defaultSelected) {
+          arr1[this.defaultSelected - 1]['icon'] = iconList[this.defaultSelected - 1]
+        }
         this.url = arr1;
       },
     },
@@ -112,9 +128,8 @@
     left: 0;
   }
   .tab-icon {
-    width: 20px;
-    height: 20px;
-    background-color: #cccccc;
+    width: 25px;
+    height: 25px;
     margin: 0 auto 5px;
   }
   .tab>img {
@@ -129,9 +144,9 @@
     margin: 0 auto;
   }
   .selected>.tab-icon {
-    background-color: #42b983;
   }
   .selected>.name {
-    color: #42b983;
+    color: #FF891B;
+    font-weight:400;
   }
 </style>
