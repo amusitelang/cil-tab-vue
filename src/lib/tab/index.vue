@@ -17,12 +17,12 @@
   const urlList = [
     {
       icon: home,
-      url: 'https://www.baidu.com',
+      url: 'http://localhost:8081/',
       name: 'Home'
     },
     {
       icon: coupon,
-      url: 'https://www.baidu.com',
+      url: 'http://localhost:8081/',
       name: 'Coupon'
     },
     {
@@ -72,8 +72,20 @@
         default: 'push',
       }
     },
+    watch: {
+      defaultSelected(val, oldVal) {
+        if (val !== oldVal) {
+          this.defaultData();
+        }
+      },
+      location(val, oldVal) {
+        if (val !== oldVal) {
+          this.defaultData();
+        }
+      }
+    },
     methods: {
-      handleGo(item) {
+      handleGo(item, index) {
         if (this.location === 'push') {
           location.href = item.url;
         } else if (this.location === 'replace') {

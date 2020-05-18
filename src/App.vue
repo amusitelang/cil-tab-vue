@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <cil-tab :base-url="urlList" location="replace"></cil-tab>
+    <cil-tab :base-url="urlList" location="push" :default-selected="test"></cil-tab>
   </div>
 </template>
 
@@ -17,7 +17,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      urlList: ['https://www.baidu.com','https://www.baidu.com','https://www.baidu.com','https://www.baidu.com','https://www.baidu.com',]
+      test: 1,
+      urlList: ['http://localhost:8081/','http://localhost:8081/','https://www.baidu.com','https://www.baidu.com','https://www.baidu.com',]
     }
   },
 }
