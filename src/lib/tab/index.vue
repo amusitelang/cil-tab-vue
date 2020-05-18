@@ -74,6 +74,7 @@
     },
     watch: {
       defaultSelected(val, oldVal) {
+        console.log(val, oldVal)
         if (val !== oldVal) {
           this.defaultData();
         }
@@ -95,6 +96,11 @@
       defaultData() {
         let arr = this.baseUrl;
         let arr1 = urlList;
+        let iconArr = [home, coupon, pointMall, delivery, menbership];
+        let iconList = [homeed, couponed, pointMalled, deliveryed, menbershiped];
+        if (this.defaultSelected) {
+          iconArr[this.defaultSelected - 1] = iconList[this.defaultSelected - 1];
+        }
         for (var i  = 0; i< arr.length; i++) {
           if (typeof arr[i] === 'string') {
             arr1[i]['url'] = arr[i]
@@ -104,7 +110,8 @@
             }
 
             if (arr[i]['icon']) {
-              arr1[i]['icon'] = arr[i]['icon'];
+              arr1[i]['icon'] = arr[i]['iconpm puublishn'];
+              iconArr[i] = arr[i]['icon'];
             }
 
             if (arr[i]['name']) {
@@ -114,9 +121,8 @@
             arr1[i] = arr[i];
           }
         }
-        let iconList = [homeed, couponed, pointMalled, deliveryed, menbershiped];
         if (this.defaultSelected) {
-          arr1[this.defaultSelected - 1]['icon'] = iconList[this.defaultSelected - 1]
+          arr1[this.defaultSelected - 1]['icon'] = iconArr[this.defaultSelected - 1]
         }
         this.url = arr1;
       },
