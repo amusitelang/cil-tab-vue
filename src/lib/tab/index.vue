@@ -123,6 +123,8 @@
             if (arr[i]['icon']) {
               arr1[i]['icon'] = arr[i]['icon'];
               iconArr[i] = arr[i]['icon'];
+            } else {
+              arr1[i]['icon'] = iconArr[i];
             }
 
             if (arr[i]['name']) {
