@@ -74,10 +74,7 @@
     },
     watch: {
       defaultSelected(val, oldVal) {
-        console.log(val, oldVal)
-        if (val !== oldVal) {
-          this.defaultData();
-        }
+        this.defaultData();
       },
       location(val, oldVal) {
         if (val !== oldVal) {
@@ -97,20 +94,34 @@
         let arr = this.baseUrl;
         let arr1 = urlList;
         let iconArr = [home, coupon, pointMall, delivery, menbership];
-        let iconList = [homeed, couponed, pointMalled, deliveryed, menbershiped];
-        if (this.defaultSelected) {
-          iconArr[this.defaultSelected - 1] = iconList[this.defaultSelected - 1];
+        switch (this.defaultSelected - 1) {
+          case 0:
+            iconArr = [homeed, coupon, pointMall, delivery, menbership];
+            break;
+          case 1:
+            iconArr = [home, couponed, pointMall, delivery, menbership];
+            break;
+          case 2:
+            iconArr = [home, coupon, pointMalled, delivery, menbership];
+            break;
+          case 3:
+            iconArr = [home, coupon, pointMall, deliveryed, menbership];
+            break;
+          case 4:
+            iconArr = [home, coupon, pointMall, delivery, menbershiped];
+            break;
         }
         for (var i  = 0; i< arr.length; i++) {
           if (typeof arr[i] === 'string') {
-            arr1[i]['url'] = arr[i]
+            arr1[i]['url'] = arr[i];
+            arr1[i]['icon'] = iconArr[i];
           } else if (typeof arr[i] === 'object') {
             if (arr[i]['url']) {
               arr1[i]['url'] = arr[i]['url'];
             }
 
             if (arr[i]['icon']) {
-              arr1[i]['icon'] = arr[i]['iconpm puublishn'];
+              arr1[i]['icon'] = arr[i]['icon'];
               iconArr[i] = arr[i]['icon'];
             }
 
@@ -120,9 +131,6 @@
           } else {
             arr1[i] = arr[i];
           }
-        }
-        if (this.defaultSelected) {
-          arr1[this.defaultSelected - 1]['icon'] = iconArr[this.defaultSelected - 1]
         }
         this.url = arr1;
       },
