@@ -2,7 +2,7 @@
   <div class="tab-box" :style="{zIndex: zIndex, background: background}">
     <div class="tab" :class="{'selected': defaultSelected === index + 1}" v-for="(item, index) in url" :key="index" @click="handleGo(item, index)">
       <div class="tab-icon">
-        <img :src="item.icon" alt="" v-show="item.icon">
+        <img :src="item.icon" alt="" v-show="item.icon" style="display: block">
       </div>
       <div class="name">{{item.name}}</div>
     </div>
