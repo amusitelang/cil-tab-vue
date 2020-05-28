@@ -80,6 +80,11 @@
         if (val !== oldVal) {
           this.defaultData();
         }
+      },
+      baseUrl(val, oldVal) {
+        if(val !== oldVal) {
+          this.defaultData(val);
+        }
       }
     },
     methods: {
@@ -90,8 +95,11 @@
           location.replace(item.url);
         }
       },
-      defaultData() {
+      defaultData(val = []) {
         let arr = this.baseUrl;
+        if (val.length > 0) {
+          arr = val;
+        }
         let arr1 = urlList;
         let iconArr = [home, coupon, pointMall, delivery, menbership];
         switch (this.defaultSelected - 1) {
