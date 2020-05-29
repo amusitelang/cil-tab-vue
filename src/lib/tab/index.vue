@@ -1,10 +1,10 @@
 <template>
   <div class="tab-box" :style="{zIndex: zIndex, background: background}">
-    <div class="tab" :class="{'selected': defaultSelected === index + 1}" v-for="(item, index) in url" :key="index" @click="handleGo(item, index)">
-      <div class="tab-icon">
+    <div class="tab" :class="{'selected': defaultSelected === index + 1}" v-for="(item, index) in url" :key="index">
+      <div class="tab-icon" @click="handleGo(item, index)">
         <img :src="item.icon" alt="" v-show="item.icon" style="display: block">
       </div>
-      <div class="name">{{item.name}}</div>
+      <div class="name" @click="handleGo(item, index)">{{item.name}}</div>
     </div>
   </div>
 </template>
@@ -168,6 +168,7 @@
   .tab {
     display: flex;
     flex-direction: column;
+    width: 65px;
     justify-content: space-between;
   }
   .tab-icon {
