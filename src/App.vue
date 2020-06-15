@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
+    <div>{{msg}}</div>
     <cil-tab :base-url="urlList" location="push" :default-selected="test"></cil-tab>
   </div>
 </template>
@@ -18,9 +19,14 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       test: 1,
-      urlList: ['http://localhost:8081/','http://localhost:8081/','https://www.baidu.com','https://www.baidu.com','https://www.baidu.com',]
+      urlList: ['http://localhost:8080/','http://localhost:8081/','https://www.baidu.com','https://www.baidu.com','https://www.baidu.com',]
     }
   },
+  mounted() {
+    setTimeout(() => {
+      this.msg='123123'
+    },2000)
+  }
 }
 </script>
 
