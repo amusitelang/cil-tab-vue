@@ -90,7 +90,7 @@
     methods: {
       handleGo(item, index) {
         if (location.href === item.url) {
-          history.go(0)
+          location.reload(true)
           return;
         }
         if (this.location === 'push') {
